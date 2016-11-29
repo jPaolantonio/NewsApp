@@ -1,0 +1,3 @@
+app_identifier "com.jpaol.news" # The bundle identifier of your app
+apple_id "" # Your Apple email address
+team_id "" # Developer Portal Team ID

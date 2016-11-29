@@ -1,0 +1,31 @@
+version: 2
+jobs:
+  build-and-test:
+    macos:
+      xcode: '10.0.0'
+    working_directory: /Users/distiller/project
+    shell: /bin/bash --login -eo pipefail
+    steps:
+      - checkout
+      - run:
+          name: Set Ruby Version
+          command: echo "ruby-2.3.7" > ~/.ruby-version
+      - run:
+          name: Bundle Install
+          command: bundle install
+      - run:
+          name: Run tests
+          command: bundle exec fastlane ios test
+      - store_test_results:
+          path: "./fastlane/test_output"
+      - store_artifacts:
+          path: "./fastlane/test_output"
+          destination: test_output
+      - store_artifacts:
+          path: ~/Library/Logs/scan
+          destination: scan-logs
+workflows:
+  version: 2
+  build-and-test:
+    jobs:
+      - build-and-test
