@@ -1,5 +1,4 @@
 import Foundation
-import Keys
 import Moya
 import RxSwift
 
@@ -10,7 +9,7 @@ final class Networking {
        stubClosure: @escaping MoyaProvider<NewsApi>.StubClosure = MoyaProvider.neverStub,
        manager: Manager = MoyaProvider<NewsApi>.defaultAlamofireManager()) {
     let plugins: [PluginType] = [
-      AccessTokenPlugin(tokenClosure: NewsKeys().newsAPIKey)
+      AccessTokenPlugin(tokenClosure: Secrets.NewsApi.apiKey)
 //      ,NetworkLoggerPlugin(verbose: true),
 //      ,NetworkLoggerPlugin(cURL: true)
     ]

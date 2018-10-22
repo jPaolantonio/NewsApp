@@ -14,7 +14,7 @@ class ArticleViewModelSpec: QuickSpec {
     }
     
     it("computes title") {
-      expect(subject.title).to(equal("Lorem ipsum dolor sit amet, consectetur adipiscing elit"))
+      expect(subject.title).to(equal("Lorem Ipsum Dolor"))
     }
   }
 }

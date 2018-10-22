@@ -10,6 +10,7 @@ final class ArticleCell: UITableViewCell {
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
 
+    titleLabel.font = UIFont.systemFont(ofSize: 12)
     titleLabel.numberOfLines = 0
     contentView.addSubview(titleLabel)
     titleLabel.snp.makeConstraints { (make) in

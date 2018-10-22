@@ -10,7 +10,7 @@ extension Article.Source {
 extension Article {
   static func sample() -> Article {
     return Article(author: "Leonardo da Vinci",
-                   title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+                   title: "Lorem Ipsum Dolor",
                    description: "Suspendisse ornare felis ipsum, vitae viverra purus efficitur quis. Sed nibh lorem, interdum nec ultricies sit amet, condimentum non metus..",
                    source: Article.Source.sample())
   }

@@ -8,7 +8,7 @@ enum NewsApi {
 
 extension NewsApi: TargetType {
   var baseURL: URL {
-    return URL(string: "https://newsapi.org/v2")!
+    return URL(string: Secrets.NewsApi.endpoint)!
   }
   
   var path: String {

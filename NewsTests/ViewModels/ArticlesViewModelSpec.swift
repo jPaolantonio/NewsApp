@@ -22,16 +22,40 @@ class ArticlesViewModelSpec: QuickSpec {
       disposeBag = nil
     }
     
-    it("can fetch articles") {
+    describe("table view data") {
       var rows: [ArticlesRow] = []
-
-      subject
-        .fetchArticles()
-        .asObservable()
-        .subscribe(onNext: { rows = $0})
-        .disposed(by: disposeBag)
-
-      expect(rows).to(haveCount(1))
+      
+      beforeEach() {
+        rows = []
+      }
+      
+      it("shows loading state") {
+        subject
+          .sections
+          .subscribe(onNext: { sections in
+            rows = sections[0].items
+          })
+          .disposed(by: disposeBag)
+        
+        expect(rows).to(haveCount(1))
+        expect(rows[0]) == ArticlesRow.loading
+      }
+      
+      it("can fetch articles") {
+        subject
+          .fetchArticles()
+          .asObservable()
+          .subscribe(onNext: { rows = $0} )
+          .disposed(by: disposeBag)
+        
+        expect(rows).to(haveCount(1))
+        switch rows[0] {
+        case let .article(_, data):
+          expect(data) == ArticleCell.Data(title: "Lorem Ipsum Dolor")
+        default:
+          fail()
+        }
+      }
     }
   }
 }

@@ -16,8 +16,17 @@ target 'News' do
 
     pod 'Nimble'
     pod 'Quick'
-
   end
+end
+
+target 'NewsUI' do
+  use_frameworks!
+
+  pod 'Moya/RxSwift'
+  pod 'RxCocoa'
+  pod 'RxDataSources'
+  pod 'RxSwift'
+  pod 'SnapKit'
 end
 
 post_install do |installer|
@@ -27,9 +36,3 @@ post_install do |installer|
     end
   end
 end
-
-plugin 'cocoapods-keys', {
-  :project => "News",
-  :keys => [
-    "NewsAPIKey"
-  ]}

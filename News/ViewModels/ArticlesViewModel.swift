@@ -7,7 +7,7 @@ import RxSwift
 enum ArticlesRow: Equatable, IdentifiableType {
   case loading
   case article(article: Article, data: ArticleCell.Data)
-
+  
   typealias Identity = String
   var identity: String {
     switch self {
@@ -26,7 +26,7 @@ final class ArticlesViewModel: ViewModel {
   
   private let _articles = BehaviorRelay<[Article]>(value: [])
   var articles: Observable<[Article]> { return _articles.asObservable() }
-
+  
   private let rows: BehaviorRelay<[ArticlesRow]>
   var sections: Observable<[ArticlesLayoutSection]> {
     return rows.map { [ ArticlesLayoutSection(items: $0) ] }
@@ -34,7 +34,7 @@ final class ArticlesViewModel: ViewModel {
   
   init(networking: Networking = Networking()) {
     self.networking = networking
-
+    
     self.rows = BehaviorRelay(value: [ArticlesRow.loading])
   }
   
@@ -47,7 +47,7 @@ final class ArticlesViewModel: ViewModel {
   
   func fetchArticles() -> Observable<[ArticlesRow]> {
     let request = TopHeadlinesRequest()
-
+    
     return networking
       .request(NewsApi.topHeadlines(request: request))
       .filterSuccessfulStatusCodes()

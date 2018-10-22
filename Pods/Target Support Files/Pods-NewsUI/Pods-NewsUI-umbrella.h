@@ -10,8 +10,7 @@
 #endif
 #endif
 
-#import "NewsKeys.h"
 
-FOUNDATION_EXPORT double KeysVersionNumber;
-FOUNDATION_EXPORT const unsigned char KeysVersionString[];
+FOUNDATION_EXPORT double Pods_NewsUIVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_NewsUIVersionString[];
 
