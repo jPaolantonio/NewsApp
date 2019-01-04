@@ -54,4 +54,8 @@ extension Networking {
     }
     return Networking(endpointClosure: endpointClosure, stubClosure: MoyaProvider.immediatelyStub)
   }
+
+  class func makeDelayedStubbed(_ seconds: TimeInterval = 20) -> Networking {
+    return Networking(stubClosure: MoyaProvider.delayedStub(seconds))
+  }
 }

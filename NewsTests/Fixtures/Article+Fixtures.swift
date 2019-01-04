@@ -3,15 +3,18 @@
 import Foundation
 
 extension Article.Source {
-  static func sample() -> Article.Source {
-    return Article.Source(id: "abc-news", name: "ABC News")
-  }
+  static let template: Article.Source =
+    Article.Source(
+      id: "abc-news",
+      name: "ABC News"
+  )
 }
 extension Article {
-  static func sample() -> Article {
-    return Article(author: "Leonardo da Vinci",
-                   title: "Lorem Ipsum Dolor",
-                   description: "Suspendisse ornare felis ipsum, vitae viverra purus efficitur quis. Sed nibh lorem, interdum nec ultricies sit amet, condimentum non metus..",
-                   source: Article.Source.sample())
-  }
+  static let template: Article =
+    Article(
+      author: "Leonardo da Vinci",
+      title: "Lorem Ipsum Dolor",
+      description: "Suspendisse ornare felis ipsum, vitae viverra purus efficitur quis. Sed nibh lorem, interdum nec ultricies sit amet, condimentum non metus..",
+      source: Article.Source.template
+  )
 }

@@ -6,7 +6,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
 
   private let navigationController = UINavigationController()
-  private lazy var flowCoordinator = FlowCoordinator(with: self.navigationController)
+  private lazy var flowCoordinator = RootCoordinator(with: self.navigationController)
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     guard !Platform.isUnitTest else { return true }

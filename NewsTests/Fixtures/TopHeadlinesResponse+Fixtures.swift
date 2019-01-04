@@ -3,9 +3,10 @@
 import Foundation
 
 extension TopHeadlinesResponse {
-  static func sample() -> TopHeadlinesResponse {
-    return TopHeadlinesResponse(status: "ok",
-                                totalResults: 1,
-                                articles: [ Article.sample() ])
-  }
+  static let template: TopHeadlinesResponse =
+    TopHeadlinesResponse(
+      status: "ok",
+      totalResults: 1,
+      articles: [ Article.template ]
+  )
 }
