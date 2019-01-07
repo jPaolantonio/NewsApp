@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<testsuites name='NewsTests.xctest' tests='2' failures='0'>
-  <testsuite name='NewsTests.ArticleViewModelSpec' tests='1' failures='0'>
-    <testcase classname='NewsTests.ArticleViewModelSpec' name='computes_title' time='0.004'/>
-  </testsuite>
-  <testsuite name='NewsTests.ArticlesViewModelSpec' tests='1' failures='0'>
-    <testcase classname='NewsTests.ArticlesViewModelSpec' name='can_fetch_articles' time='0.028'/>
-  </testsuite>
-</testsuites>

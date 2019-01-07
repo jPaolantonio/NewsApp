@@ -9,9 +9,7 @@ final class Networking {
        stubClosure: @escaping MoyaProvider<NewsApi>.StubClosure = MoyaProvider.neverStub,
        manager: Manager = MoyaProvider<NewsApi>.defaultAlamofireManager()) {
     let plugins: [PluginType] = [
-      AccessTokenPlugin(tokenClosure: { () -> String in
-        return Secrets.NewsApi.apiKey
-      })
+      AccessTokenPlugin(tokenClosure: { Secrets.NewsApi.apiKey } )
 //      ,NetworkLoggerPlugin(verbose: true),
 //      ,NetworkLoggerPlugin(cURL: true)
     ]

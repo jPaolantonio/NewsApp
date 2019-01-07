@@ -30,31 +30,19 @@ final class ArticleListPresenter: Presenter {
   
   func fetchArticles() -> Observable<[ArticleListRow]> {
     let request = TopHeadlinesRequest()
-    
+
+    let articleAdapter: (Article) -> ArticleListRow = { article in
+      let data = ArticleCell.Data(title: article.title)
+      return ArticleListRow.article(article: article, data: data)
+    }
+
     return networking
       .request(NewsApi.topHeadlines(request: request))
       .filterSuccessfulStatusCodes()
       .map(TopHeadlinesResponse.self)
-      .map { $0.articles }
-      .mapToRows()
+      .map { (response) -> [ArticleListRow] in
+        response.articles ||> articleAdapter
+      }
       .asObservable()
-  }
-}
-
-extension PrimitiveSequenceType where TraitType == SingleTrait, ElementType == [Article] {
-  fileprivate func mapToRows() -> Single<[ArticleListRow]> {
-    return map { $0.mapToRows() }
-  }
-}
-
-extension Sequence where Element == Article {
-  func mapToRows() -> [ArticleListRow] {
-    return map { ArticleListRow.article(article: $0, data: $0.makeCellData()) }
-  }
-}
-
-extension Article {
-  func makeCellData() -> ArticleCell.Data {
-    return ArticleCell.Data(title: title)
   }
 }
