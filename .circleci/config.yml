@@ -8,9 +8,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Set Ruby Version
-          command: echo "ruby-2.3.7" > ~/.ruby-version
-      - run:
           name: Run secrets script
           command: scripts/setup.sh
       - run:
