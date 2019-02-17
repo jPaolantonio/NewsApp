@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build-and-test:
+  build-ios:
     macos:
       xcode: '10.1.0'
     working_directory: /Users/distiller/project
@@ -9,13 +9,19 @@ jobs:
       - checkout
       - run:
           name: Run secrets script
-          command: scripts/setup.sh
+          command: |
+            cd ios
+            scripts/setup.sh
       - run:
           name: Bundle Install
-          command: bundle install
+          command:  |
+            cd ios
+            bundle install
       - run:
           name: Run tests
-          command: bundle exec fastlane ios test
+          command:  |
+            cd ios
+            bundle exec fastlane ios test
       - store_test_results:
           path: "./fastlane/test_output"
       - store_artifacts:
@@ -26,6 +32,6 @@ jobs:
           destination: scan-logs
 workflows:
   version: 2
-  build-and-test:
+  all:
     jobs:
-      - build-and-test
+      - build-ios

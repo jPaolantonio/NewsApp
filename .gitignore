@@ -2,7 +2,7 @@
 News.xcworkspace/xcuserdata
 
 ## Secrets
-News/Secrets/Secrets.swift
+ios/News/Secrets/Secrets.swift
 
 ## User settings
 xcuserdata/
