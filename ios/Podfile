@@ -1,16 +1,9 @@
 platform :ios, '10.0'
 
 inhibit_all_warnings!
+use_frameworks!
 
 target 'News' do
-  use_frameworks!
-
-  pod 'Moya/RxSwift'
-  pod 'RxCocoa'
-  pod 'RxDataSources'
-  pod 'RxSwift'
-  pod 'SnapKit'
-
   target 'NewsTests' do
     inherit! :search_paths
 
@@ -19,14 +12,21 @@ target 'News' do
   end
 end
 
-target 'NewsUI' do
-  use_frameworks!
-
+target 'NewsFramework' do
+  inherit! :search_paths
+  
   pod 'Moya/RxSwift'
   pod 'RxCocoa'
   pod 'RxDataSources'
   pod 'RxSwift'
   pod 'SnapKit'
+
+  target 'NewsFrameworkTests' do
+    inherit! :search_paths
+
+    pod 'Nimble'
+    pod 'Quick'
+  end
 end
 
 post_install do |installer|

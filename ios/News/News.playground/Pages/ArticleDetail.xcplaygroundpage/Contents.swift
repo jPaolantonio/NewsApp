@@ -1,12 +1,12 @@
 //: [Previous](@previous)
 
-@testable import NewsUI
+@testable import NewsFramework
 
 import UIKit
 import PlaygroundSupport
 
-let article = Article.template
-let presenter = ArticleDetailPresenter(article: article)
+let article = Article(author: "Author", title: "Title", description: "Description", source: Article.Source.init(id: "1", name: "Source Name"))
+let interactor = ArticleDetailInteractor(article: article)
 let viewController = ArticleDetailViewController(presenter: presenter)
 
 PlaygroundPage.current.liveView = viewController.view

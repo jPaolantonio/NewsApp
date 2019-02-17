@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-cp News/Secrets/Secrets.swift.example News/Secrets/Secrets.swift
+cp NewsFramework/Secrets/Secrets.swift.example NewsFramework/Secrets/Secrets.swift
