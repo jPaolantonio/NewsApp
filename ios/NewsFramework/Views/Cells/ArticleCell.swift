@@ -1,8 +1,8 @@
 import Foundation
 import UIKit
 
-final class ArticleCell: UITableViewCell {
-  struct Data: Codable, Hashable {
+public final class ArticleCell: UITableViewCell {
+  public struct Data: Codable, Hashable {
     let title: String
   }
   private lazy var titleLabel = UILabel()
@@ -10,13 +10,14 @@ final class ArticleCell: UITableViewCell {
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-    titleLabel.font = UIFont.systemFont(ofSize: 12)
-    titleLabel.numberOfLines = 0
+    titleLabel
+      |> UILabel.titleStyle
+
     contentView.addSubview(titleLabel)
     titleLabel.snp.makeConstraints { (make) in
-      make.leading.top.equalToSuperview().offset(15)
-      make.trailing.lessThanOrEqualToSuperview().inset(15)
-      make.bottom.equalToSuperview().inset(15)
+      make.leading.top.equalToSuperview().offset(CGFloat.na_grid(4))
+      make.trailing.lessThanOrEqualToSuperview().inset(CGFloat.na_grid(4))
+      make.bottom.equalToSuperview().inset(CGFloat.na_grid(4))
     }
   }
 

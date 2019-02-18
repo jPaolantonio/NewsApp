@@ -7,7 +7,7 @@ import PlaygroundSupport
 
 let article = Article(author: "Author", title: "Title", description: "Description", source: Article.Source.init(id: "1", name: "Source Name"))
 let interactor = ArticleDetailInteractor(article: article)
-let viewController = ArticleDetailViewController(presenter: presenter)
+let viewController = ArticleDetailViewController(interactor: interactor)
 
 PlaygroundPage.current.liveView = viewController.view
 

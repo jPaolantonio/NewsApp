@@ -56,7 +56,11 @@
 		1A6F3121221A0B6A00980262 /* TopHeadlinesResponse+Fixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6F3119221A0B6A00980262 /* TopHeadlinesResponse+Fixtures.swift */; };
 		1A6F3122221A0B6A00980262 /* Source+Fixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6F311A221A0B6A00980262 /* Source+Fixtures.swift */; };
 		1A6F3124221A10FF00980262 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6F3123221A10FE00980262 /* Secrets.swift */; };
+		1A6F3127221A1A1C00980262 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6F3126221A1A1C00980262 /* Fonts.swift */; };
+		1A6F3129221A1AC400980262 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6F3128221A1AC400980262 /* Colors.swift */; };
+		1A6F312B221A395700980262 /* Labels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6F312A221A395700980262 /* Labels.swift */; };
 		1A8A47D71DED1F5800F408C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8A47D61DED1F5800F408C5 /* AppDelegate.swift */; };
+		1AEC31E1221A491100B3D372 /* Sizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEC31E0221A491100B3D372 /* Sizing.swift */; };
 		2EF0201F217D24B3005BFFEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EF0201C217D24B3005BFFEF /* Assets.xcassets */; };
 		2EF02020217D24B3005BFFEF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EF0201D217D24B3005BFFEF /* LaunchScreen.storyboard */; };
 		55D6AF0587BFDB059CE29777 /* Pods_News.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB4AA945E148C68FD216AF65 /* Pods_News.framework */; };
@@ -155,9 +159,13 @@
 		1A6F3119221A0B6A00980262 /* TopHeadlinesResponse+Fixtures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TopHeadlinesResponse+Fixtures.swift"; sourceTree = "<group>"; };
 		1A6F311A221A0B6A00980262 /* Source+Fixtures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Source+Fixtures.swift"; sourceTree = "<group>"; };
 		1A6F3123221A10FE00980262 /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		1A6F3126221A1A1C00980262 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		1A6F3128221A1AC400980262 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		1A6F312A221A395700980262 /* Labels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Labels.swift; sourceTree = "<group>"; };
 		1A8A47D31DED1F5800F408C5 /* News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = News.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A8A47D61DED1F5800F408C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1A8A47E21DED1F5800F408C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1AEC31E0221A491100B3D372 /* Sizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sizing.swift; sourceTree = "<group>"; };
 		1FEA26ED6590535C70716E78 /* Pods-NewsUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsUI.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NewsUI/Pods-NewsUI.debug.xcconfig"; sourceTree = "<group>"; };
 		28AABB861DE06B7AFE189164 /* Pods-News.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-News.debug.xcconfig"; path = "Pods/Target Support Files/Pods-News/Pods-News.debug.xcconfig"; sourceTree = "<group>"; };
 		29CDAB0D3F7FE05D4F3C5471 /* Pods-NewsUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsUI.release.xcconfig"; path = "Pods/Target Support Files/Pods-NewsUI/Pods-NewsUI.release.xcconfig"; sourceTree = "<group>"; };
@@ -382,6 +390,7 @@
 		1A6F30DC221A052100980262 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1A6F3125221A1A1000980262 /* Styling */,
 				1A6F30DD221A052100980262 /* Cells */,
 			);
 			path = Views;
@@ -465,6 +474,17 @@
 				1A6F311A221A0B6A00980262 /* Source+Fixtures.swift */,
 			);
 			path = Fixtures;
+			sourceTree = "<group>";
+		};
+		1A6F3125221A1A1000980262 /* Styling */ = {
+			isa = PBXGroup;
+			children = (
+				1A6F3128221A1AC400980262 /* Colors.swift */,
+				1A6F3126221A1A1C00980262 /* Fonts.swift */,
+				1A6F312A221A395700980262 /* Labels.swift */,
+				1AEC31E0221A491100B3D372 /* Sizing.swift */,
+			);
+			path = Styling;
 			sourceTree = "<group>";
 		};
 		1A8A47CA1DED1F5800F408C5 = {
@@ -858,7 +878,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A6F30FE221A052100980262 /* ArticleListBuilder.swift in Sources */,
+				1A6F3129221A1AC400980262 /* Colors.swift in Sources */,
 				1A6F30F3221A052100980262 /* TopHeadlinesReponse.swift in Sources */,
+				1AEC31E1221A491100B3D372 /* Sizing.swift in Sources */,
 				1A6F30FB221A052100980262 /* Article.swift in Sources */,
 				1A6F3107221A052100980262 /* LoadingCell.swift in Sources */,
 				1A6F3103221A052100980262 /* RootCoordinator.swift in Sources */,
@@ -878,6 +900,7 @@
 				1A6F3104221A052100980262 /* ArticleCell.swift in Sources */,
 				1A6F3100221A052100980262 /* ArticleDetailBuilder.swift in Sources */,
 				1A6F30EE221A052100980262 /* UITableView+Register.swift in Sources */,
+				1A6F3127221A1A1C00980262 /* Fonts.swift in Sources */,
 				1A6F30EC221A052100980262 /* FeatureFlagger.swift in Sources */,
 				1A6F30EB221A052100980262 /* FeatureFlag.swift in Sources */,
 				1A6F30F5221A052100980262 /* TopHeadlinesRequest.swift in Sources */,
@@ -888,6 +911,7 @@
 				1A6F30F9221A052100980262 /* Source.swift in Sources */,
 				1A6F30F7221A052100980262 /* Prelude.swift in Sources */,
 				1A6F3102221A052100980262 /* ArticleDetailInteractor.swift in Sources */,
+				1A6F312B221A395700980262 /* Labels.swift in Sources */,
 				1A6F30FC221A052100980262 /* ArticleListInteractor.swift in Sources */,
 				1A6F30EA221A052100980262 /* FeatureFlaggerType.swift in Sources */,
 				1A6F30F8221A052100980262 /* Lens.swift in Sources */,
