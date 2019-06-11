@@ -4,11 +4,8 @@ import RxCocoa
 import RxDataSources
 import RxSwift
 
-final class ArticleListInteractor: Interactor {
+final class ArticleListViewModel: ViewModel {
   private let networking: Networking
-  
-  private let _articles = BehaviorRelay<[Article]>(value: [])
-  var articles: Observable<[Article]> { return _articles.asObservable() }
   
   private let rows: BehaviorRelay<[ArticleListRow]>
   var sections: Observable<[ArticleListSection]> {

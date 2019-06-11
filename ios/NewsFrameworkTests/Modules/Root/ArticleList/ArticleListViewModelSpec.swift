@@ -7,16 +7,16 @@ import Nimble
 import Quick
 import RxSwift
 
-class ArticleListInteractorSpec: QuickSpec {
+class ArticleListViewModelSpec: QuickSpec {
   override func spec() {
-    var subject: ArticleListInteractor!
+    var subject: ArticleListViewModel!
     var disposeBag: DisposeBag!
     
     beforeEach {
       disposeBag = DisposeBag()
       
       let networking = Networking.makeStubbed(responseObject: TopHeadlinesResponse.template)
-      subject = ArticleListInteractor(networking: networking)
+      subject = ArticleListViewModel(networking: networking)
     }
     
     afterEach {

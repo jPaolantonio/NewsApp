@@ -1,6 +1,6 @@
 import Foundation
 import RxSwift
 
-public class Interactor {
+public class ViewModel {
   let disposeBag = DisposeBag()
 }

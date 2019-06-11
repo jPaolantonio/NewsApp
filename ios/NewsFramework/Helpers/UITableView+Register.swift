@@ -2,12 +2,8 @@ import Foundation
 import UIKit
 
 extension UITableView {
-  public func register<T: UITableViewCell>(cellClass: T.Type) {
-    register(cellClass, forCellReuseIdentifier: String(describing: cellClass))
-  }
-
-  public func register<T: UITableViewCell>(cellClasses: [T.Type]) {
-    cellClasses.forEach { register(cellClass: $0) }
+  public func register(_ cellClasses: UITableViewCell.Type...) {
+    cellClasses.forEach { register($0, forCellReuseIdentifier: String(describing: $0)) }
   }
 
   public func dequeueReusableCell<T: UITableViewCell>(cellClass: T.Type, for indexPath: IndexPath) -> T {

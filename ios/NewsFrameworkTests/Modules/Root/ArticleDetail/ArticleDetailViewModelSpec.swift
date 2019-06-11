@@ -5,12 +5,12 @@ import Foundation
 import Nimble
 import Quick
 
-class ArticleDetailInteractorSpec: QuickSpec {
+class ArticleDetailViewModelSpec: QuickSpec {
   override func spec() {
-    var subject: ArticleDetailInteractor!
+    var subject: ArticleDetailViewModel!
     
     beforeEach {
-      subject = ArticleDetailInteractor(article: Article.template)
+      subject = ArticleDetailViewModel(article: Article.template)
     }
     
     it("computes title") {

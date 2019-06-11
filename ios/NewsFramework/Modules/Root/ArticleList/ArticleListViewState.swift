@@ -4,6 +4,10 @@ import RxCocoa
 import RxDataSources
 import RxSwift
 
+struct ArticleListViewState {
+  let sections: [ArticleListSection]
+}
+
 enum ArticleListRow: Equatable, IdentifiableType {
   case loading
   case article(article: Article, data: ArticleCell.Data)
@@ -14,7 +18,7 @@ enum ArticleListRow: Equatable, IdentifiableType {
     case .loading:
       return "Loading"
     case let .article(article, data):
-      return "Article \(article.hash) \(data.hash)"
+      return "Article \(article.hashValue) \(data.hashValue)"
     }
   }
 }

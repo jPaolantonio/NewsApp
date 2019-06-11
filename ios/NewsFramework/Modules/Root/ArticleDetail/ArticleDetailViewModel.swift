@@ -1,6 +1,6 @@
 import Foundation
 
-final class ArticleDetailInteractor: Interactor {
+final class ArticleDetailViewModel: ViewModel {
   private let article: Article
   let title: String
   let descriptionText: String?

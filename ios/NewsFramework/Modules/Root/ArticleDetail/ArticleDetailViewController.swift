@@ -3,16 +3,16 @@ import SnapKit
 import UIKit
 
 final class ArticleDetailViewController: UIViewController {
-  private let interactor: ArticleDetailInteractor
+  private let viewModel: ArticleDetailViewModel
 
   private lazy var descriptionTextView = UITextView()
   
-  init(interactor: ArticleDetailInteractor) {
-    self.interactor = interactor
+  init(viewModel: ArticleDetailViewModel) {
+    self.viewModel = viewModel
     
     super.init(nibName: nil, bundle: nil)
     
-    title = interactor.title
+    title = viewModel.title
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -24,7 +24,7 @@ final class ArticleDetailViewController: UIViewController {
     
     view.backgroundColor = UIColor.white
 
-    descriptionTextView.text = interactor.descriptionText
+    descriptionTextView.text = viewModel.descriptionText
     view.addSubview(descriptionTextView)
     descriptionTextView.snp.makeConstraints { (make: ConstraintMaker) in
       make.top.bottom.equalToSuperview()
