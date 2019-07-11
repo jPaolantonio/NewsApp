@@ -34,7 +34,6 @@ final class ArticleListViewController: UIViewController {
     view.backgroundColor = .white
     
     tableView.backgroundColor = view.backgroundColor
-    tableView.separatorStyle = .none
     tableView.rowHeight = UITableView.automaticDimension
     tableView.estimatedRowHeight = 50
     tableView.contentInset = UIEdgeInsets(top: 7.5, left: 0, bottom: 7.5, right: 0)

@@ -32,16 +32,6 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1A8A47E61DED1F5800F408C5"
-               BuildableName = "NewsTests.xctest"
-               BlueprintName = "NewsTests"
-               ReferencedContainer = "container:News.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "1A6F3097221A040400980262"
                BuildableName = "NewsFrameworkTests.xctest"
                BlueprintName = "NewsFrameworkTests"

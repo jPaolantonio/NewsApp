@@ -6,7 +6,7 @@ extension UILabel {
   }
 
   static let titleStyle = baseStyle
-    <> { (view: UILabel) in view.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.headline) }
+    <> { (view: UILabel) in view.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.title3) }
 
   static let detailStyle = baseStyle
     <> { (view: UILabel) in view.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.subheadline) }

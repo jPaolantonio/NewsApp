@@ -4,12 +4,7 @@ inhibit_all_warnings!
 use_frameworks!
 
 target 'News' do
-  target 'NewsTests' do
-    inherit! :search_paths
-
-    pod 'Nimble'
-    pod 'Quick'
-  end
+  pod 'Sourcery', '~> 0.16.1'
 end
 
 target 'NewsFramework' do

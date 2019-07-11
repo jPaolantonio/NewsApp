@@ -20,6 +20,7 @@ PODS:
   - RxSwift (4.4.0):
     - RxAtomic (~> 4.4)
   - SnapKit (4.2.0)
+  - Sourcery (0.16.1)
 
 DEPENDENCIES:
   - Moya/RxSwift
@@ -29,6 +30,7 @@ DEPENDENCIES:
   - RxDataSources
   - RxSwift
   - SnapKit
+  - Sourcery (~> 0.16.1)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -43,6 +45,7 @@ SPEC REPOS:
     - RxDataSources
     - RxSwift
     - SnapKit
+    - Sourcery
 
 SPEC CHECKSUMS:
   Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
@@ -56,7 +59,8 @@ SPEC CHECKSUMS:
   RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
   RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  Sourcery: 16779170d35ee204666843b09031f36721a84bcc
 
-PODFILE CHECKSUM: 3acf87fe1eda0e19fb02239ab367a1e737a21b88
+PODFILE CHECKSUM: 8970f737f4b29f3858bc05f8446f5142260ea853
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.1
