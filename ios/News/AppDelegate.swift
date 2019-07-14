@@ -7,7 +7,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
 
   private let navigationController = UINavigationController()
-  private lazy var flowCoordinator = RootCoordinator(with: self.navigationController)
+  private lazy var rootCoordinator = RootCoordinator(with: self.navigationController)
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     guard !Platform.isUnitTest else { return true }
@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     window.backgroundColor = .white
     self.window = window
 
-    flowCoordinator.start()
+    rootCoordinator.start()
 
     window.rootViewController = navigationController
     window.makeKeyAndVisible()

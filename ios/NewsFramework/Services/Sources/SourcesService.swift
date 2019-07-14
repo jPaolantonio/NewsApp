@@ -1,7 +1,7 @@
 import Foundation
 import RxSwift
 
-final class SourcesCounter: SourcesServiceType {
+final class SourcesService: SourcesServiceType {
 
   let _filteredSources: BehaviorSubject<[Source]>
   var filteredSources: Observable<[Source]> {

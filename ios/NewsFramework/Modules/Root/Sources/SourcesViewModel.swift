@@ -15,7 +15,8 @@ final class SourcesViewModel: ViewModel {
     return rows.map { SourcesViewState(sections: [ SourcesListSection(items: $0) ]) }
   }
 
-  init(networking: Networking = Networking()) {
+  init(sources: SourcesServiceType,
+       networking: Networking = Networking()) {
     self.networking = networking
 
     self.rows = BehaviorRelay(value: [SourcesRow.loading])
