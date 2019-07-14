@@ -1,8 +1,10 @@
-import Foundation
+@testable import News
+@testable import NewsFramework
+
 import RxSwift
 
-final class SourcesService: SourcesServiceType {
-  private let _filteredSources: BehaviorSubject<[Source]>
+final class MockSourcesService: SourcesServiceType {
+  let _filteredSources: BehaviorSubject<[Source]>
   var filteredSources: Observable<[Source]> {
     return _filteredSources.asObservable()
   }
@@ -16,7 +18,7 @@ final class SourcesService: SourcesServiceType {
   }
 
   func addSource(_ source: Source) {
-//    var sources = _filteredSources.val
+    //    var sources = _filteredSources.val
     _filteredSources.onNext([])
   }
 }

@@ -10,13 +10,15 @@ import RxSwift
 class ArticleListViewModelSpec: QuickSpec {
   override func spec() {
     var subject: ArticleListViewModel!
+    var sources: MockSourcesService!
     var disposeBag: DisposeBag!
     
     beforeEach {
       disposeBag = DisposeBag()
       
       let networking = Networking.makeStubbed(responseObject: TopHeadlinesResponse.template)
-      subject = ArticleListViewModel(networking: networking)
+      sources = MockSourcesService()
+      subject = ArticleListViewModel(sources: sources, networking: networking)
     }
     
     afterEach {
