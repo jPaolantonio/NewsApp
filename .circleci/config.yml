@@ -2,7 +2,7 @@ version: 2
 jobs:
   build-ios:
     macos:
-      xcode: '10.1.0'
+      xcode: "10.2.0"
     working_directory: /Users/distiller/project
     shell: /bin/bash --login -eo pipefail
     steps:

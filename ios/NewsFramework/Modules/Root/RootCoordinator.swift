@@ -8,12 +8,14 @@ public final class RootCoordinator: CoordinatorType {
   private let navigationController: UINavigationController
   private let disposeBag = DisposeBag()
 
+  private let services = Services()
+
   public init(with navigationController: UINavigationController) {
     self.navigationController = navigationController
   }
 
   public func start() {
-    let viewModel = ArticleListViewModel()
+    let viewModel = ArticleListViewModel(sources: services.sources)
     let viewController = ArticleListViewController(viewModel: viewModel)
     viewController
       .actions
@@ -39,7 +41,7 @@ public final class RootCoordinator: CoordinatorType {
   }
 
   private func presentSources() {
-    let viewModel = SourcesViewModel()
+    let viewModel = SourcesViewModel(sources: services.sources)
     let viewController = SourcesViewController(viewModel: viewModel)
     let navigationController = UINavigationController(rootViewController: viewController)
 

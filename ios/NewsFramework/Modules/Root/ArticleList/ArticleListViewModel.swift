@@ -12,7 +12,8 @@ final class ArticleListViewModel: ViewModel {
     return rows.map { [ ArticleListSection(items: $0) ] }
   }
   
-  init(networking: Networking = Networking()) {
+  init(sources: SourcesServiceType,
+       networking: Networking = Networking()) {
     self.networking = networking
     
     self.rows = BehaviorRelay(value: [ArticleListRow.loading])
