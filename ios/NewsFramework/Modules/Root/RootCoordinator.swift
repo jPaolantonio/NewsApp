@@ -15,20 +15,20 @@ public final class RootCoordinator: CoordinatorType {
   public func start() {
     let viewModel = ArticleListViewModel()
     let viewController = ArticleListViewController(viewModel: viewModel)
-
-    viewController
-      |> addSourcesButton(to:)
-
-    navigationController.show(viewController, sender: self)
     viewController
       .actions
-      .subscribe(onNext: { [unowned self] (action) in
+      .emit(onNext: { [unowned self] (action) in
         switch action {
         case let .viewArticle(article):
           self.showArticle(article)
         }
       })
       .disposed(by: disposeBag)
+
+    viewController
+      |> addSourcesButton(to:)
+
+    navigationController.show(viewController, sender: self)
   }
 
   private func showArticle(_ article: Article) {
@@ -42,6 +42,17 @@ public final class RootCoordinator: CoordinatorType {
     let viewModel = SourcesViewModel()
     let viewController = SourcesViewController(viewModel: viewModel)
     let navigationController = UINavigationController(rootViewController: viewController)
+
+    viewController
+      .actions
+      .emit(onNext: { [unowned self] (action) in
+        switch action {
+        case let .chooseSource(source):
+
+          navigationController.dismiss(animated: true, completion: nil)
+        }
+      })
+      .disposed(by: disposeBag)
 
     viewController
       |> addCloseButton(to:)

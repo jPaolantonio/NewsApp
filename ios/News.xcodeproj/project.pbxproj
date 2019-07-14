@@ -12,6 +12,8 @@
 		1A29FAD422AF3FDD0014AEE0 /* SourcesViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A29FAD322AF3FDD0014AEE0 /* SourcesViewState.swift */; };
 		1A29FAD622AF457A0014AEE0 /* SourceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A29FAD522AF457A0014AEE0 /* SourceCell.swift */; };
 		1A29FAD822AF47070014AEE0 /* SourcesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A29FAD722AF47070014AEE0 /* SourcesResponse.swift */; };
+		1A53CB5822DB958700677E9B /* SourcesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A53CB5722DB958700677E9B /* SourcesService.swift */; };
+		1A53CB5A22DB95A400677E9B /* SourcesServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A53CB5922DB95A400677E9B /* SourcesServiceType.swift */; };
 		1A6F3099221A040400980262 /* NewsFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A6F3090221A040400980262 /* NewsFramework.framework */; };
 		1A6F30A0221A040400980262 /* NewsFrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6F309F221A040400980262 /* NewsFrameworkTests.swift */; };
 		1A6F30A2221A040400980262 /* NewsFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A6F3092221A040400980262 /* NewsFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -130,6 +132,8 @@
 		1A29FAD322AF3FDD0014AEE0 /* SourcesViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesViewState.swift; sourceTree = "<group>"; };
 		1A29FAD522AF457A0014AEE0 /* SourceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceCell.swift; sourceTree = "<group>"; };
 		1A29FAD722AF47070014AEE0 /* SourcesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesResponse.swift; sourceTree = "<group>"; };
+		1A53CB5722DB958700677E9B /* SourcesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesService.swift; sourceTree = "<group>"; };
+		1A53CB5922DB95A400677E9B /* SourcesServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesServiceType.swift; sourceTree = "<group>"; };
 		1A6F3090221A040400980262 /* NewsFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NewsFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A6F3092221A040400980262 /* NewsFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsFramework.h; sourceTree = "<group>"; };
 		1A6F3093221A040400980262 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -263,6 +267,15 @@
 			path = Sources;
 			sourceTree = "<group>";
 		};
+		1A53CB5622DB957200677E9B /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				1A53CB5722DB958700677E9B /* SourcesService.swift */,
+				1A53CB5922DB95A400677E9B /* SourcesServiceType.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
 		1A6F3091221A040400980262 /* NewsFramework */ = {
 			isa = PBXGroup;
 			children = (
@@ -298,6 +311,7 @@
 		1A6F30AE221A052100980262 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				1A53CB5622DB957200677E9B /* Sources */,
 				1A6F30AF221A052100980262 /* Cache */,
 				1A6F30B3221A052100980262 /* ViewCounter */,
 				1A6F30B6221A052100980262 /* FeatureFlagger */,
@@ -659,8 +673,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1A6F30A7221A040400980262 /* Build configuration list for PBXNativeTarget "NewsFramework" */;
 			buildPhases = (
-				1A83C0BD22D6CB6E00F41DFD /* Run Sourcery */,
 				82914AA38C5BC7BB508607FF /* [CP] Check Pods Manifest.lock */,
+				1A83C0BD22D6CB6E00F41DFD /* Run Sourcery */,
 				1A6F308B221A040400980262 /* Headers */,
 				1A6F308C221A040400980262 /* Sources */,
 				1A6F308D221A040400980262 /* Frameworks */,
@@ -874,9 +888,9 @@
 				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
-				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
+				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
@@ -888,9 +902,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
@@ -993,6 +1007,7 @@
 				1A6F30F3221A052100980262 /* TopHeadlinesReponse.swift in Sources */,
 				1AEC31E1221A491100B3D372 /* Sizing.swift in Sources */,
 				1A6F30FB221A052100980262 /* Article.swift in Sources */,
+				1A53CB5822DB958700677E9B /* SourcesService.swift in Sources */,
 				1A6F3107221A052100980262 /* LoadingCell.swift in Sources */,
 				1A6F3103221A052100980262 /* RootCoordinator.swift in Sources */,
 				1A6F3124221A10FF00980262 /* Secrets.swift in Sources */,
@@ -1002,6 +1017,7 @@
 				1A6F30ED221A052100980262 /* SingleSectionModel.swift in Sources */,
 				1A6F30F0221A052100980262 /* CoordinatorType.swift in Sources */,
 				1A83C0BC22D6CAB000F41DFD /* AutoLenses.generated.swift in Sources */,
+				1A53CB5A22DB95A400677E9B /* SourcesServiceType.swift in Sources */,
 				1A29FAD422AF3FDD0014AEE0 /* SourcesViewState.swift in Sources */,
 				1A6F30EF221A052100980262 /* StringHelper.swift in Sources */,
 				1A6F30F6221A052100980262 /* NewsApi.swift in Sources */,
@@ -1142,7 +1158,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jim.NewsFramework;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1186,7 +1201,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jim.NewsFramework;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1225,7 +1239,6 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jim.NewsFrameworkTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/News.app/News";
 			};
@@ -1262,7 +1275,6 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jim.NewsFrameworkTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/News.app/News";
 			};
@@ -1403,6 +1415,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1446,6 +1459,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1468,7 +1482,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jpaol.news;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -1489,7 +1502,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jpaol.news;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};

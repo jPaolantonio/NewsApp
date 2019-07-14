@@ -1,15 +1,16 @@
 import Foundation
+import RxCocoa
 import RxDataSources
 import RxSwift
 import SnapKit
 import UIKit
 
 final class SourcesViewController: UIViewController {
-  enum PresenterActions {
+  enum RoutingAction {
     case chooseSource(Source)
   }
-  private let _actions = PublishSubject<PresenterActions>()
-  var actions: Observable<PresenterActions> { return _actions.asObservable() }
+  private let _actions = PublishRelay<RoutingAction>()
+  var actions: Signal<RoutingAction> { return _actions.asSignal() }
 
   private let viewModel: SourcesViewModel
   private let disposeBag = DisposeBag()
@@ -91,7 +92,7 @@ final class SourcesViewController: UIViewController {
 
     switch dataSource[indexPath] {
     case .loading: break
-    case let .source(source, _): _actions.onNext(PresenterActions.chooseSource(source))
+    case let .source(source, _): _actions.accept(RoutingAction.chooseSource(source))
     }
   }
 }

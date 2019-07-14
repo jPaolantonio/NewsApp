@@ -1,15 +1,16 @@
 import Foundation
+import RxCocoa
 import RxDataSources
 import RxSwift
 import SnapKit
 import UIKit
 
 final class ArticleListViewController: UIViewController {
-  enum PresenterActions {
+  enum RoutingAction {
     case viewArticle(Article)
   }
-  private let _actions = PublishSubject<PresenterActions>()
-  var actions: Observable<PresenterActions> { return _actions.asObservable() }
+  private let _actions = PublishRelay<RoutingAction>()
+  var actions: Signal<RoutingAction> { return _actions.asSignal() }
   
   private let viewModel: ArticleListViewModel
   private let disposeBag = DisposeBag()
@@ -89,7 +90,7 @@ final class ArticleListViewController: UIViewController {
     
     switch dataSource[indexPath] {
     case .loading: break
-    case let .article(article, _): _actions.onNext(PresenterActions.viewArticle(article))
+    case let .article(article, _): _actions.accept(RoutingAction.viewArticle(article))
     }
   }
 }
