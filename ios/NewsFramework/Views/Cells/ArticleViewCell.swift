@@ -1,8 +1,8 @@
 import Foundation
 import UIKit
 
-final class ArticleViewCell: UITableViewCell {
-  struct Data: Codable, Hashable {
+public final class ArticleViewCell: UITableViewCell {
+  public struct Data: Codable, Hashable {
     let title: String
     let likes: String
   }
@@ -12,10 +12,9 @@ final class ArticleViewCell: UITableViewCell {
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-    viewLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
-    viewLabel.setContentHuggingPriority(.required, for: .horizontal)
-    viewLabel.font = UIFont.boldSystemFont(ofSize: 14)
-    viewLabel.numberOfLines = 1
+    viewLabel
+      |> UILabel.titleStyle
+      <> UILabel.compressionFixed
     contentView.addSubview(viewLabel)
     viewLabel.snp.makeConstraints { (make) in
       make.top.greaterThanOrEqualToSuperview().offset(15)
@@ -24,8 +23,8 @@ final class ArticleViewCell: UITableViewCell {
       make.centerY.equalToSuperview()
     }
 
-    titleLabel.font = UIFont.systemFont(ofSize: 12)
-    titleLabel.numberOfLines = 0
+    titleLabel
+      |> UILabel.titleStyle
     contentView.addSubview(titleLabel)
     titleLabel.snp.makeConstraints { (make) in
       make.top.greaterThanOrEqualToSuperview().offset(15)

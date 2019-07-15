@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-final class LoadingCell: UITableViewCell {
+public final class LoadingCell: UITableViewCell {
   private lazy var loader = UIActivityIndicatorView(style: .gray)
   
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -19,7 +19,7 @@ final class LoadingCell: UITableViewCell {
     fatalError("init(coder:) has not been implemented")
   }
 
-  func startAnimating() {
+  public func startAnimating() {
     loader.startAnimating()
   }
 }

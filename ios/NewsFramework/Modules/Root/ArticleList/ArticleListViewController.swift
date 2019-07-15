@@ -1,23 +1,24 @@
 import Foundation
+import RxCocoa
 import RxDataSources
 import RxSwift
 import SnapKit
 import UIKit
 
 final class ArticleListViewController: UIViewController {
-  enum PresenterActions {
+  enum RoutingAction {
     case viewArticle(Article)
   }
-  private let _actions = PublishSubject<PresenterActions>()
-  var actions: Observable<PresenterActions> { return _actions.asObservable() }
+  private let _actions = PublishRelay<RoutingAction>()
+  var actions: Signal<RoutingAction> { return _actions.asSignal() }
   
-  private let interactor: ArticleListInteractor
+  private let viewModel: ArticleListViewModel
   private let disposeBag = DisposeBag()
   
   private lazy var tableView = UITableView()
   
-  init(interactor: ArticleListInteractor) {
-    self.interactor = interactor
+  init(viewModel: ArticleListViewModel) {
+    self.viewModel = viewModel
     
     super.init(nibName: nil, bundle: nil)
     
@@ -30,13 +31,14 @@ final class ArticleListViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+
+    view.backgroundColor = .white
     
     tableView.backgroundColor = view.backgroundColor
-    tableView.separatorStyle = .none
     tableView.rowHeight = UITableView.automaticDimension
     tableView.estimatedRowHeight = 50
     tableView.contentInset = UIEdgeInsets(top: 7.5, left: 0, bottom: 7.5, right: 0)
-    tableView.register(cellClasses: [ArticleCell.self, ArticleViewCell.self, ErrorCell.self, LoadingCell.self])
+    tableView.register(ArticleCell.self, ArticleViewCell.self, ErrorCell.self, LoadingCell.self)
     view.addSubview(tableView)
     tableView.snp.makeConstraints { (make: ConstraintMaker) in
       make.top.bottom.equalToSuperview()
@@ -52,7 +54,7 @@ final class ArticleListViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
 
-    interactor.start()
+    viewModel.start()
   }
   
   private func setupTableViewDataSource() {
@@ -76,7 +78,7 @@ final class ArticleListViewController: UIViewController {
       .subscribe(onNext: { [unowned self] (indexPath: IndexPath) in self.selected(dataSource: dataSource, indexPath: indexPath) })
       .disposed(by: disposeBag)
     
-    interactor
+    viewModel
       .sections
       .asObservable()
       .bind(to: tableView.rx.items(dataSource: dataSource))
@@ -88,7 +90,7 @@ final class ArticleListViewController: UIViewController {
     
     switch dataSource[indexPath] {
     case .loading: break
-    case let .article(article, _): _actions.onNext(PresenterActions.viewArticle(article))
+    case let .article(article, _): _actions.accept(RoutingAction.viewArticle(article))
     }
   }
 }

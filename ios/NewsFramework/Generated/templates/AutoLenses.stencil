@@ -1,0 +1,20 @@
+// swiftlint:disable variable_name
+
+import Prelude
+
+{% for type in types.implementing.AutoLenses|struct %}
+extension {{ type.name }} {
+    enum lens {
+    {% for variable in type.storedVariables %}
+        static let {{ variable.name }} = Lens<{{type.name}}, {{variable.typeName}}>(
+            get: { $0.{{variable.name}} },
+            set: { {{variable.name}}, whole in
+                {{type.name}}(
+                    {% for argument in type.storedVariables %}{{argument.name}}: {% if variable.name == argument.name %}{{variable.name}}{% else %}whole.{{argument.name}}{% endif %}{% if not forloop.last %},
+                    {% endif %}{% endfor %}
+                )
+            }
+        ){% endfor %}
+    }
+}
+{% endfor %}

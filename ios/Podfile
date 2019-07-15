@@ -4,21 +4,16 @@ inhibit_all_warnings!
 use_frameworks!
 
 target 'News' do
-  target 'NewsTests' do
-    inherit! :search_paths
-
-    pod 'Nimble'
-    pod 'Quick'
-  end
+  pod 'Sourcery', '~> 0.16.1'
 end
 
 target 'NewsFramework' do
   inherit! :search_paths
   
-  pod 'Moya/RxSwift'
-  pod 'RxCocoa'
-  pod 'RxDataSources'
-  pod 'RxSwift'
+  pod 'Moya/RxSwift', '14.0.0-alpha.1'
+  pod 'RxCocoa', '~> 5.0'
+  pod 'RxDataSources', '~> 4.0'
+  pod 'RxSwift', '~> 5.0'
   pod 'SnapKit'
 
   target 'NewsFrameworkTests' do
@@ -26,13 +21,5 @@ target 'NewsFramework' do
 
     pod 'Nimble'
     pod 'Quick'
-  end
-end
-
-post_install do |installer|
-  installer.pods_project.targets.each do |target|
-    target.build_configurations.each do |config|
-      config.build_settings['SWIFT_VERSION'] = '4.2'
-    end
   end
 end

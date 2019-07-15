@@ -7,7 +7,7 @@ import PlaygroundSupport
 
 let interactor = ArticleListInteractor()
 
-let viewController = ArticleListViewController(presenter: presenter)
+let viewController = ArticleListViewController(interactor: interactor)
 
 PlaygroundPage.current.liveView = viewController.view
 

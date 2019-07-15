@@ -1,8 +1,8 @@
 import Foundation
 import UIKit
 
-final class ErrorCell: UITableViewCell {
-  struct Data: Codable, Hashable {
+public final class ErrorCell: UITableViewCell {
+  public struct Data: Codable, Hashable {
     let title: String
   }
   private lazy var titleLabel = UILabel()
