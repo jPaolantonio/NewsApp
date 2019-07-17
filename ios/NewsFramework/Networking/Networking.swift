@@ -10,8 +10,8 @@ public final class Networking {
        manager: Manager = MoyaProvider<NewsApi>.defaultAlamofireManager()) {
     let plugins: [PluginType] = [
       AccessTokenPlugin(tokenClosure: { Secrets.NewsApi.apiKey } )
-//      ,NetworkLoggerPlugin(verbose: true),
-//      ,NetworkLoggerPlugin(cURL: true)
+//      , NetworkLoggerPlugin(verbose: true),
+//      , NetworkLoggerPlugin(cURL: true)
     ]
     self.provider = MoyaProvider(endpointClosure:endpointClosure,
                                  stubClosure: stubClosure,
@@ -21,5 +21,9 @@ public final class Networking {
 
   func request(_ target: NewsApi) -> Single<Response> {
     return provider.rx.request(target)
+  }
+
+  func request(_ target: NewsApi, _ completion: @escaping Completion) {
+    provider.request(target, completion: completion)
   }
 }

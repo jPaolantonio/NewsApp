@@ -7,7 +7,7 @@ import UIKit
 
 final class SourcesViewController: UIViewController {
   enum RoutingAction {
-    case chooseSource(Source)
+    case save
   }
   private let _actions = PublishRelay<RoutingAction>()
   var actions: Signal<RoutingAction> { return _actions.asSignal() }
@@ -23,6 +23,16 @@ final class SourcesViewController: UIViewController {
     super.init(nibName: nil, bundle: nil)
 
     title = LocalizedString("Sources")
+
+    let saveButton = UIBarButtonItem(title: "Save", style: .plain, target: nil, action: nil)
+    saveButton
+      .rx.tap
+      .subscribe(onNext: { [unowned self] in
+        self.viewModel.saveFilteredSources()
+        self._actions.accept(.save)
+      })
+      .disposed(by: disposeBag)
+    navigationItem.rightBarButtonItem = saveButton
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -70,6 +80,10 @@ final class SourcesViewController: UIViewController {
         let cell = tableView.dequeueReusableCell(cellClass: SourceCell.self, for: indexPath)
         cell.update(data: data)
         return cell
+      case let .selectedSource(_, data):
+        let cell = tableView.dequeueReusableCell(cellClass: SourceCell.self, for: indexPath)
+        cell.update(data: data)
+        return cell
       }
     }
     let dataSource = RxTableViewSectionedAnimatedDataSource<SourcesListSection>(animationConfiguration: animationConfiguration,
@@ -91,8 +105,12 @@ final class SourcesViewController: UIViewController {
     tableView.deselectRow(at: indexPath, animated: true)
 
     switch dataSource[indexPath] {
-    case .loading: break
-    case let .source(source, _): _actions.accept(RoutingAction.chooseSource(source))
+    case .loading:
+      break
+    case let .source(source, _):
+      viewModel.selectSource(source)
+    case let .selectedSource(source, _):
+      viewModel.selectSource(source)
     }
   }
 }

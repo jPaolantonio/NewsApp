@@ -1,9 +1,9 @@
 import Foundation
 
 final class Services {
-  let sources: SourcesServiceType
+  let sources: FilteredSourcesServiceType
 
   init() {
-    sources = SourcesService()
+    sources = FilteredSourcesService()
   }
 }

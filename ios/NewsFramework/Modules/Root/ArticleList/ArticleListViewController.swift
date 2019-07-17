@@ -49,10 +49,6 @@ final class ArticleListViewController: UIViewController {
     }
     
     setupTableViewDataSource()
-  }
-
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
 
     viewModel.start()
   }

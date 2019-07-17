@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 public final class ArticleCell: UITableViewCell {
-  public struct Data: Codable, Hashable {
+  public struct Data: Codable, Equatable {
     let title: String
   }
   private lazy var titleLabel = UILabel()

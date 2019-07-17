@@ -1,10 +1,8 @@
-@testable import News
-@testable import NewsFramework
-
+import Foundation
 import RxRelay
 import RxSwift
 
-final class MockSourcesService: FilteredSourcesServiceType {
+final class FilteredSourcesService: FilteredSourcesServiceType {
   private let _filteredSources: BehaviorRelay<[Source]>
   var filteredSources: Observable<[Source]> {
     return _filteredSources.asObservable()
