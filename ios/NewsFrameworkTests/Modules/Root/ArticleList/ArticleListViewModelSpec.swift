@@ -18,7 +18,7 @@ class ArticleListViewModelSpec: QuickSpec {
       
       let networking = Networking.makeStubbed(responseObject: TopHeadlinesResponse.template)
       sources = MockSourcesService()
-      subject = ArticleListViewModel(sources: sources, networking: networking)
+      subject = ArticleListViewModel(sourcesService: sources, networking: networking)
     }
     
     afterEach {
@@ -30,18 +30,6 @@ class ArticleListViewModelSpec: QuickSpec {
       
       beforeEach() {
         rows = []
-      }
-      
-      it("shows loading state") {
-        subject
-          .sections
-          .subscribe(onNext: { sections in
-            rows = sections[0].items
-          })
-          .disposed(by: disposeBag)
-        
-        expect(rows).to(haveCount(1))
-        expect(rows[0]) == ArticleListRow.loading
       }
       
       it("can fetch articles") {

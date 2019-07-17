@@ -15,7 +15,7 @@ public final class RootCoordinator: CoordinatorType {
   }
 
   public func start() {
-    let viewModel = ArticleListViewModel(sources: services.sources)
+    let viewModel = ArticleListViewModel(sourcesService: services.sources)
     let viewController = ArticleListViewController(viewModel: viewModel)
     viewController
       .actions
@@ -41,16 +41,15 @@ public final class RootCoordinator: CoordinatorType {
   }
 
   private func presentSources() {
-    let viewModel = SourcesViewModel(sources: services.sources)
+    let viewModel = SourcesViewModel(sourcesService: services.sources)
     let viewController = SourcesViewController(viewModel: viewModel)
     let navigationController = UINavigationController(rootViewController: viewController)
 
     viewController
       .actions
-      .emit(onNext: { [unowned self] (action) in
+      .emit(onNext: { (action) in
         switch action {
-        case let .chooseSource(source):
-
+        case .save:
           navigationController.dismiss(animated: true, completion: nil)
         }
       })

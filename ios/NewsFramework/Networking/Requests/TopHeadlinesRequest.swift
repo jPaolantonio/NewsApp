@@ -1,11 +1,19 @@
 import Foundation
 
 public struct TopHeadlinesRequest: Codable {
-  let country: String = "us"
+  let country: String
+  let sources: [Source]
 
-  var queryParameters: [String: Any] {
-    guard let data = try? JSONEncoder().encode(self) else { return [:] }
-    guard let object = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else { return [:] }
-    return object
+  init(country: String = "us", sources: [Source] = []) {
+    self.country = country
+    self.sources = sources
+  }
+
+  var queryParameters: [String: AnyHashable] {
+    if sources.isEmpty {
+      return [ "country" : country ]
+    } else {
+      return [ "sources" : sources.map { $0.id }.joined(separator: ",") ]
+    }
   }
 }

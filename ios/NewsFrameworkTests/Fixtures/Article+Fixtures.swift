@@ -10,9 +10,9 @@ extension Article.Source {
 }
 extension Article {
   static let template: Article =
-    Article(author: "Leonardo da Vinci",
+    Article(articleDescription:  "Suspendisse ornare felis ipsum, vitae viverra purus efficitur quis. Sed nibh lorem, interdum nec ultricies sit amet, condimentum non metus..",
+            author: "Leonardo da Vinci",
             content: "",
-            description:  "Suspendisse ornare felis ipsum, vitae viverra purus efficitur quis. Sed nibh lorem, interdum nec ultricies sit amet, condimentum non metus..",
             publishedAt: "",
             source: Article.Source.template,
             title: "Lorem Ipsum Dolor",

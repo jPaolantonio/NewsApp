@@ -17,8 +17,8 @@ enum ArticleListRow: Equatable, IdentifiableType {
     switch self {
     case .loading:
       return "Loading"
-    case let .article(article, data):
-      return "Article \(article.hashValue) \(data.hashValue)"
+    case let .article(article, _):
+      return "Article \(article.description))"
     }
   }
 }

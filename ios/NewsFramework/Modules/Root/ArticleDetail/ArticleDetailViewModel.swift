@@ -8,6 +8,6 @@ final class ArticleDetailViewModel: ViewModel {
   init(article: Article) {
     self.article = article
     self.title = article.title
-    self.descriptionText = article.description
+    self.descriptionText = article.articleDescription
   }
 }

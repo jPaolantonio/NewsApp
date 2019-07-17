@@ -7,13 +7,28 @@ import Prelude
 
 extension Article {
     enum lens {
+        static let articleDescription = Lens<Article, String?>(
+            get: { $0.articleDescription },
+            set: { articleDescription, whole in
+                Article(
+                    articleDescription: articleDescription,
+                    author: whole.author,
+                    content: whole.content,
+                    publishedAt: whole.publishedAt,
+                    source: whole.source,
+                    title: whole.title,
+                    url: whole.url,
+                    urlToImage: whole.urlToImage
+                )
+            }
+        )
         static let author = Lens<Article, String?>(
             get: { $0.author },
             set: { author, whole in
                 Article(
+                    articleDescription: whole.articleDescription,
                     author: author,
                     content: whole.content,
-                    description: whole.description,
                     publishedAt: whole.publishedAt,
                     source: whole.source,
                     title: whole.title,
@@ -26,24 +41,9 @@ extension Article {
             get: { $0.content },
             set: { content, whole in
                 Article(
+                    articleDescription: whole.articleDescription,
                     author: whole.author,
                     content: content,
-                    description: whole.description,
-                    publishedAt: whole.publishedAt,
-                    source: whole.source,
-                    title: whole.title,
-                    url: whole.url,
-                    urlToImage: whole.urlToImage
-                )
-            }
-        )
-        static let description = Lens<Article, String?>(
-            get: { $0.description },
-            set: { description, whole in
-                Article(
-                    author: whole.author,
-                    content: whole.content,
-                    description: description,
                     publishedAt: whole.publishedAt,
                     source: whole.source,
                     title: whole.title,
@@ -56,9 +56,9 @@ extension Article {
             get: { $0.publishedAt },
             set: { publishedAt, whole in
                 Article(
+                    articleDescription: whole.articleDescription,
                     author: whole.author,
                     content: whole.content,
-                    description: whole.description,
                     publishedAt: publishedAt,
                     source: whole.source,
                     title: whole.title,
@@ -71,9 +71,9 @@ extension Article {
             get: { $0.source },
             set: { source, whole in
                 Article(
+                    articleDescription: whole.articleDescription,
                     author: whole.author,
                     content: whole.content,
-                    description: whole.description,
                     publishedAt: whole.publishedAt,
                     source: source,
                     title: whole.title,
@@ -86,9 +86,9 @@ extension Article {
             get: { $0.title },
             set: { title, whole in
                 Article(
+                    articleDescription: whole.articleDescription,
                     author: whole.author,
                     content: whole.content,
-                    description: whole.description,
                     publishedAt: whole.publishedAt,
                     source: whole.source,
                     title: title,
@@ -101,9 +101,9 @@ extension Article {
             get: { $0.url },
             set: { url, whole in
                 Article(
+                    articleDescription: whole.articleDescription,
                     author: whole.author,
                     content: whole.content,
-                    description: whole.description,
                     publishedAt: whole.publishedAt,
                     source: whole.source,
                     title: whole.title,
@@ -116,9 +116,9 @@ extension Article {
             get: { $0.urlToImage },
             set: { urlToImage, whole in
                 Article(
+                    articleDescription: whole.articleDescription,
                     author: whole.author,
                     content: whole.content,
-                    description: whole.description,
                     publishedAt: whole.publishedAt,
                     source: whole.source,
                     title: whole.title,

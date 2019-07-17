@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Source: Codable, Hashable {
+struct Source: Codable {
   let id: String
   let name: String
   let description: String
@@ -9,3 +9,6 @@ public struct Source: Codable, Hashable {
   let language: String
   let country: String
 }
+
+extension Source: CustomStringConvertible {}
+extension Source: Equatable {}

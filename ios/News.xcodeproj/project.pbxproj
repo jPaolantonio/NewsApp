@@ -12,8 +12,9 @@
 		1A29FAD422AF3FDD0014AEE0 /* SourcesViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A29FAD322AF3FDD0014AEE0 /* SourcesViewState.swift */; };
 		1A29FAD622AF457A0014AEE0 /* SourceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A29FAD522AF457A0014AEE0 /* SourceCell.swift */; };
 		1A29FAD822AF47070014AEE0 /* SourcesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A29FAD722AF47070014AEE0 /* SourcesResponse.swift */; };
-		1A53CB5822DB958700677E9B /* SourcesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A53CB5722DB958700677E9B /* SourcesService.swift */; };
-		1A53CB5A22DB95A400677E9B /* SourcesServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A53CB5922DB95A400677E9B /* SourcesServiceType.swift */; };
+		1A39ECD622DD664D00B21DEA /* DynamicCustomStringConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A39ECD522DD664C00B21DEA /* DynamicCustomStringConvertable.swift */; };
+		1A53CB5822DB958700677E9B /* FilteredSourcesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A53CB5722DB958700677E9B /* FilteredSourcesService.swift */; };
+		1A53CB5A22DB95A400677E9B /* FilteredSourcesServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A53CB5922DB95A400677E9B /* FilteredSourcesServiceType.swift */; };
 		1A53CB5C22DB9DF800677E9B /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A53CB5B22DB9DF800677E9B /* Services.swift */; };
 		1A53CB5F22DBA45500677E9B /* MockSourcesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A53CB5E22DBA45500677E9B /* MockSourcesService.swift */; };
 		1A6F3099221A040400980262 /* NewsFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A6F3090221A040400980262 /* NewsFramework.framework */; };
@@ -134,8 +135,9 @@
 		1A29FAD322AF3FDD0014AEE0 /* SourcesViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesViewState.swift; sourceTree = "<group>"; };
 		1A29FAD522AF457A0014AEE0 /* SourceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceCell.swift; sourceTree = "<group>"; };
 		1A29FAD722AF47070014AEE0 /* SourcesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesResponse.swift; sourceTree = "<group>"; };
-		1A53CB5722DB958700677E9B /* SourcesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesService.swift; sourceTree = "<group>"; };
-		1A53CB5922DB95A400677E9B /* SourcesServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesServiceType.swift; sourceTree = "<group>"; };
+		1A39ECD522DD664C00B21DEA /* DynamicCustomStringConvertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCustomStringConvertable.swift; sourceTree = "<group>"; };
+		1A53CB5722DB958700677E9B /* FilteredSourcesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredSourcesService.swift; sourceTree = "<group>"; };
+		1A53CB5922DB95A400677E9B /* FilteredSourcesServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredSourcesServiceType.swift; sourceTree = "<group>"; };
 		1A53CB5B22DB9DF800677E9B /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		1A53CB5E22DBA45500677E9B /* MockSourcesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSourcesService.swift; sourceTree = "<group>"; };
 		1A6F3090221A040400980262 /* NewsFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NewsFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -271,13 +273,13 @@
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		1A53CB5622DB957200677E9B /* Sources */ = {
+		1A53CB5622DB957200677E9B /* FilteredSources */ = {
 			isa = PBXGroup;
 			children = (
-				1A53CB5722DB958700677E9B /* SourcesService.swift */,
-				1A53CB5922DB95A400677E9B /* SourcesServiceType.swift */,
+				1A53CB5722DB958700677E9B /* FilteredSourcesService.swift */,
+				1A53CB5922DB95A400677E9B /* FilteredSourcesServiceType.swift */,
 			);
-			path = Sources;
+			path = FilteredSources;
 			sourceTree = "<group>";
 		};
 		1A53CB5D22DBA44100677E9B /* Services */ = {
@@ -327,7 +329,7 @@
 				1A53CB5B22DB9DF800677E9B /* Services.swift */,
 				1A6F30AF221A052100980262 /* Cache */,
 				1A6F30B6221A052100980262 /* FeatureFlagger */,
-				1A53CB5622DB957200677E9B /* Sources */,
+				1A53CB5622DB957200677E9B /* FilteredSources */,
 				1A6F30B3221A052100980262 /* ViewCounter */,
 			);
 			path = Services;
@@ -423,6 +425,7 @@
 			children = (
 				1A6F30CF221A052100980262 /* Article.swift */,
 				1A6F30CD221A052100980262 /* Source.swift */,
+				1A39ECD522DD664C00B21DEA /* DynamicCustomStringConvertable.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1021,17 +1024,18 @@
 				1A6F30F3221A052100980262 /* TopHeadlinesReponse.swift in Sources */,
 				1AEC31E1221A491100B3D372 /* Sizing.swift in Sources */,
 				1A6F30FB221A052100980262 /* Article.swift in Sources */,
-				1A53CB5822DB958700677E9B /* SourcesService.swift in Sources */,
+				1A53CB5822DB958700677E9B /* FilteredSourcesService.swift in Sources */,
 				1A6F3107221A052100980262 /* LoadingCell.swift in Sources */,
 				1A6F3103221A052100980262 /* RootCoordinator.swift in Sources */,
 				1A6F3124221A10FF00980262 /* Secrets.swift in Sources */,
 				1A6F30E5221A052100980262 /* CacheType.swift in Sources */,
 				1A6F3106221A052100980262 /* ErrorCell.swift in Sources */,
+				1A39ECD622DD664D00B21DEA /* DynamicCustomStringConvertable.swift in Sources */,
 				1A6F30F4221A052100980262 /* Networking.swift in Sources */,
 				1A6F30ED221A052100980262 /* SingleSectionModel.swift in Sources */,
 				1A6F30F0221A052100980262 /* CoordinatorType.swift in Sources */,
 				1A83C0BC22D6CAB000F41DFD /* AutoLenses.generated.swift in Sources */,
-				1A53CB5A22DB95A400677E9B /* SourcesServiceType.swift in Sources */,
+				1A53CB5A22DB95A400677E9B /* FilteredSourcesServiceType.swift in Sources */,
 				1A29FAD422AF3FDD0014AEE0 /* SourcesViewState.swift in Sources */,
 				1A6F30EF221A052100980262 /* StringHelper.swift in Sources */,
 				1A6F30F6221A052100980262 /* NewsApi.swift in Sources */,

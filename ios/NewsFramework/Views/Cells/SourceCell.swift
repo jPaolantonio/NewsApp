@@ -4,6 +4,7 @@ import UIKit
 public final class SourceCell: UITableViewCell {
   public struct Data: Codable, Hashable {
     let title: String
+    let selected: Bool
   }
   private lazy var titleLabel = UILabel()
 
@@ -27,5 +28,6 @@ public final class SourceCell: UITableViewCell {
 
   func update(data: Data) {
     titleLabel.text = data.title
+    accessoryType = data.selected ? .checkmark : .none
   }
 }
