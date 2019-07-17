@@ -38,6 +38,7 @@ final class ArticleListViewController: UIViewController {
     tableView.rowHeight = UITableView.automaticDimension
     tableView.estimatedRowHeight = 50
     tableView.contentInset = UIEdgeInsets(top: 7.5, left: 0, bottom: 7.5, right: 0)
+    tableView.tableFooterView = UIView()
     tableView.register(ArticleCell.self, ArticleViewCell.self, ErrorCell.self, LoadingCell.self)
     view.addSubview(tableView)
     tableView.snp.makeConstraints { (make: ConstraintMaker) in
@@ -61,8 +62,16 @@ final class ArticleListViewController: UIViewController {
         let cell = tableView.dequeueReusableCell(cellClass: LoadingCell.self, for: indexPath)
         cell.startAnimating()
         return cell
+      case let .error(data):
+        let cell = tableView.dequeueReusableCell(cellClass: ErrorCell.self, for: indexPath)
+        cell.update(data: data)
+        return cell
       case let .article(_, data):
         let cell = tableView.dequeueReusableCell(cellClass: ArticleCell.self, for: indexPath)
+        cell.update(data: data)
+        return cell
+      case let .articleView(_, data):
+        let cell = tableView.dequeueReusableCell(cellClass: ArticleViewCell.self, for: indexPath)
         cell.update(data: data)
         return cell
       }
@@ -86,7 +95,9 @@ final class ArticleListViewController: UIViewController {
     
     switch dataSource[indexPath] {
     case .loading: break
+    case .error: break
     case let .article(article, _): _actions.accept(RoutingAction.viewArticle(article))
+    case let .articleView(article, _): _actions.accept(RoutingAction.viewArticle(article))
     }
   }
 }

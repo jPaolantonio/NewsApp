@@ -5,8 +5,9 @@ import RxDataSources
 import RxSwift
 
 final class ArticleListViewModel: ViewModel {
-  private let networking: Networking
+  private let featureFlagger: FeatureFlaggerType
   private let filteredSourcesService: FilteredSourcesServiceType
+  private let networking: Networking
   
   private let rows: BehaviorRelay<[ArticleListRow]>
   var sections: Observable<[ArticleListSection]> {
@@ -14,9 +15,11 @@ final class ArticleListViewModel: ViewModel {
   }
   
   init(sourcesService: FilteredSourcesServiceType,
+       featureFlagger: FeatureFlaggerType = FeatureFlagger(),
        networking: Networking = Networking()) {
     self.networking = networking
     self.filteredSourcesService = sourcesService
+    self.featureFlagger = featureFlagger
     
     self.rows = BehaviorRelay(value: [ArticleListRow.loading])
 
@@ -46,9 +49,14 @@ final class ArticleListViewModel: ViewModel {
 
     let request = TopHeadlinesRequest(sources: filteredSourcesService.currentFilteredSources)
 
+//    let articleAdapter: (Article) -> ArticleListRow = { article in
+//      let data = ArticleCell.Data(title: article.title)
+//      return ArticleListRow.article(article: article, data: data)
+//    }
+
     let articleAdapter: (Article) -> ArticleListRow = { article in
-      let data = ArticleCell.Data(title: article.title)
-      return ArticleListRow.article(article: article, data: data)
+      let data = ArticleViewCell.Data(title: article.title, likes: "4")
+      return ArticleListRow.articleView(article: article, data: data)
     }
 
     return networking

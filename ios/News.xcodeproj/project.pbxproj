@@ -338,9 +338,9 @@
 		1A6F30AF221A052100980262 /* Cache */ = {
 			isa = PBXGroup;
 			children = (
+				1A6F30B2221A052100980262 /* Cacheable.swift */,
 				1A6F30B0221A052100980262 /* CacheType.swift */,
 				1A6F30B1221A052100980262 /* MemoryCache.swift */,
-				1A6F30B2221A052100980262 /* Cacheable.swift */,
 			);
 			path = Cache;
 			sourceTree = "<group>";

@@ -1,5 +1,5 @@
 import Foundation
 
 enum FeatureFlag {
-  case viewCounderEnabled
+  case newDesignedCells
 }

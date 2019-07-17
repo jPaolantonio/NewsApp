@@ -15,9 +15,9 @@ public final class ErrorCell: UITableViewCell {
     titleLabel.numberOfLines = 0
     contentView.addSubview(titleLabel)
     titleLabel.snp.makeConstraints { (make) in
-      make.leading.top.equalToSuperview().offset(15)
-      make.trailing.lessThanOrEqualToSuperview().inset(15)
-      make.bottom.equalToSuperview().inset(15)
+      make.top.greaterThanOrEqualToSuperview().offset(15)
+      make.center.equalToSuperview()
+      make.bottom.lessThanOrEqualToSuperview().offset(15)
     }
   }
 

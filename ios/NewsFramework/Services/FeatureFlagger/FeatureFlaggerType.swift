@@ -1,5 +1,7 @@
 import Foundation
+import RxSwift
 
 protocol FeatureFlaggerType {
-  func isFeatureFlagEnabled(_ featureFlag: FeatureFlag) -> Bool
+  var featureFlags: Observable<[FeatureFlag]> { get }
+  var currentFeatureFlags: [FeatureFlag] { get }
 }
