@@ -15,7 +15,7 @@ public final class RootCoordinator: CoordinatorType {
   }
 
   public func start() {
-    let viewModel = ArticleListViewModel(sourcesService: services.sources)
+    let viewModel = ArticleListViewModel(sourcesService: services.sources, viewCounter: services.viewCounter)
     let viewController = ArticleListViewController(viewModel: viewModel)
     viewController
       .actions
@@ -34,7 +34,7 @@ public final class RootCoordinator: CoordinatorType {
   }
 
   private func showArticle(_ article: Article) {
-    let viewModel = ArticleDetailViewModel(article: article)
+    let viewModel = ArticleDetailViewModel(article: article, viewCounter: services.viewCounter)
     let viewController = ArticleDetailViewController(viewModel: viewModel)
 
     navigationController.pushViewController(viewController, animated: true)

@@ -8,7 +8,9 @@ final class ArticleListViewModel: ViewModel {
   private let featureFlagger: FeatureFlaggerType
   private let filteredSourcesService: FilteredSourcesServiceType
   private let networking: Networking
-  
+  private let viewCounter: ViewCounterType
+
+  private let articles: BehaviorRelay<[Article]>
   private let rows: BehaviorRelay<[ArticleListRow]>
   var sections: Observable<[ArticleListSection]> {
     return rows.map { [ ArticleListSection(items: $0) ] }
@@ -16,12 +18,15 @@ final class ArticleListViewModel: ViewModel {
   
   init(sourcesService: FilteredSourcesServiceType,
        featureFlagger: FeatureFlaggerType = FeatureFlagger(),
+       viewCounter: ViewCounterType = ViewCounter(),
        networking: Networking = Networking()) {
-    self.networking = networking
-    self.filteredSourcesService = sourcesService
     self.featureFlagger = featureFlagger
-    
-    self.rows = BehaviorRelay(value: [ArticleListRow.loading])
+    self.filteredSourcesService = sourcesService
+    self.networking = networking
+    self.viewCounter = viewCounter
+
+    self.articles = BehaviorRelay(value: [])
+    self.rows = BehaviorRelay(value: [])
 
     super.init()
     
@@ -29,43 +34,63 @@ final class ArticleListViewModel: ViewModel {
   }
   
   func start() {
-    fetchArticles()
-      .catchErrorJustReturn([])
-      .bind(to: rows)
-      .disposed(by: disposeBag)
+    refetchArticles()
   }
 
   private func setupBindings() {
     filteredSourcesService
       .filteredSources
       .subscribe(onNext: { [weak self] _ in
-        self?.start()
+        self?.refetchArticles()
       })
       .disposed(by: disposeBag)
+
+    let articleAdapter: (Article) -> ArticleListRow = { article in
+      let data = ArticleCell.Data(title: article.title)
+      return ArticleListRow.article(article: article, data: data)
+    }
+
+    let articleViewAdapter: (ViewCounterType) -> (Article) -> ArticleListRow = { viewCounter in
+      return { article in
+        let data = ArticleViewCell.Data(title: article.title, likes: "\(viewCounter.getViewCount(article: article))")
+        return ArticleListRow.articleView(article: article, data: data)
+      }
+    }
+
+    let featureFlagEnabled = featureFlagger
+      .featureFlags
+      .map { $0.contains(.newDesignedCells) }
+
+    let viewsUpdated = viewCounter.viewsUpdated
+
+    Observable
+      .combineLatest(articles, featureFlagEnabled, viewsUpdated)
+      .map { articles, featureFlagEnabled, viewCounter -> [ArticleListRow] in
+        if featureFlagEnabled {
+          return articles ||> articleViewAdapter(viewCounter)
+        } else {
+          return articles ||> articleAdapter
+        }
+      }
+      .bind(to: rows)
+      .disposed(by: disposeBag)
   }
-  
-  func fetchArticles() -> Observable<[ArticleListRow]> {
+
+  private func refetchArticles() {
     self.rows.accept([ArticleListRow.loading])
 
     let request = TopHeadlinesRequest(sources: filteredSourcesService.currentFilteredSources)
 
-//    let articleAdapter: (Article) -> ArticleListRow = { article in
-//      let data = ArticleCell.Data(title: article.title)
-//      return ArticleListRow.article(article: article, data: data)
-//    }
-
-    let articleAdapter: (Article) -> ArticleListRow = { article in
-      let data = ArticleViewCell.Data(title: article.title, likes: "4")
-      return ArticleListRow.articleView(article: article, data: data)
-    }
-
-    return networking
+    networking
       .request(NewsApi.topHeadlines(request: request))
       .filterSuccessfulStatusCodes()
       .map(TopHeadlinesResponse.self)
-      .map { (response) -> [ArticleListRow] in
-        response.articles ||> articleAdapter
-      }
-      .asObservable()
+      .map { $0.articles }
+      .subscribe(onSuccess: { [weak self] articles in
+        self?.articles.accept(articles)
+        }, onError: { error in
+          print("Error \(error)")
+      })
+      .disposed(by: disposeBag)
   }
 }

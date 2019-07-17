@@ -1,5 +1,5 @@
 import Foundation
 
-enum FeatureFlag {
+enum FeatureFlag: CaseIterable {
   case newDesignedCells
 }
